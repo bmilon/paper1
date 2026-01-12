@@ -3,7 +3,7 @@ README Documentation
 
 This README provides an overview of the POMS 2025 submission repository. It outlines the repository's contents, including source code, data files, and documentation. The requirements section specifies the need for Python 3.x and additional packages listed in `requirements.txt`. Usage instructions guide users through cloning the repository, installing dependencies, and running the main script. Licensing information and contact details for the project maintainer are also included.
 -->
-submission for POMS 2025
+
 ## Overview
 This repository contains the submission materials for our paper, titled "Optimizing Delivery for Quick Commerce Factoring Qualitative Assessment of Generated Routes." The project presents a framework for optimizing delivery routes in quick commerce scenarios by integrating both quantitative metrics and qualitative assessments of generated routes. The repository includes Python source code for route generation, data files for experimentation, and scripts to evaluate route quality using large language models (LLMs). The approach enables users to sample and analyze delivery routes, automate qualitative feedback extraction, and benchmark different routing strategies. Detailed instructions and requirements are provided to facilitate reproducibility and further research. The novelty of our approach is that 
 * Conventionally, routing (done using VRP/CVRP) solution optimize using _crow-flying_ distances to optimize for cost and execution speed. This may lead to instances where the geenrated route might be infeasible.
