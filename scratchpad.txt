@@ -1,0 +1,34 @@
+ # complete run 
+ python3 main.py --filepath /Users/mbhattacharya/Downloads/data/seen/POMS_data/bangalore/bangalore.shp --drop_points 4 --routes_to_sample  5  --base_url http://localhost:11434/v1   --llms_to_use  minicpm-v granite3.2-vision  --compare_with_labelled_data --graph_file_path training_data/study_area/blr.graphml --path_to_save_route_order training_data/routing1/ --path_to_save_directions training_data/driving_directions1/ --path_to_save_individual_legs raining_data/individual_legs1/ --path_to_save_evaluations training_data/results1/ --path_to_labeled_data  training_data/results/project-1-at-2025-09-02-12-38-15b0e105.json  --add_pause_bw_evals --evaluate_files  --generate_fresh_data --path_to_save_individual_legs training_data/individual_legs1/
+
+
+python main.py --filepath "D:\poms2025dataset\bangalore.shp" --drop_points 4 --routes_to_sample  5  --base_url http://localhost:11434/v1 --llms_to_use  gemma3:12b   --compare_with_labelled_data --graph_file_path  "D:\poms2025dataset\blr.graphml" --path_to_save_route_order "D:\poms2025dataset\routing" --path_to_save_directions  "D:\poms2025dataset\driving_directions" --path_to_save_individual_legs "D:\poms2025dataset\legs" --path_to_save_evaluations "D:\poms2025dataset\results"  --path_to_labeled_data  "D:\poms2025dataset\project-1-at-2025-09-02-12-38-15b0e105.json"  --add_pause_bw_evals --evaluate_files  --generate_fresh_data 
+    
+
+# generate training data only 
+  python3 main.py  --generate_fresh_data  --filepath /Users/mbhattacharya/Downloads/data/seen/POMS_data/bangalore/bangalore.shp --drop_points 4 --routes_to_sample  5   --graph_file_path training_data/study_area/blr.graphml --path_to_save_route_order training_data/routing2/ --path_to_save_directions training_data/driving_directions2/ --path_to_save_individual_legs raining_data/individual_legs2/
+
+# generate and eval routes 
+  python3 main.py  --generate_fresh_data  --filepath /Users/mbhattacharya/Downloads/data/seen/POMS_data/bangalore/bangalore.shp --drop_points 4 --routes_to_sample  5   --graph_file_path training_data/study_area/blr.graphml --path_to_save_route_order training_data/routing2/ --path_to_save_directions training_data/driving_directions2/ --path_to_save_individual_legs raining_data/individual_legs2/ --evaluate_files
+
+# only eval files in a folder and write results to a CSV
+python3 main.py  --evaluate_files --add_pause_bw_evals  --path_to_save_individual_legs /Users/mbhattacharya/Downloads/toprint/POMS2025/curated_dataset/ --path_to_save_evaluations training_data/results/ --sim_count 100000 --max_timer 60
+python main.py  --evaluate_files --add_pause_bw_evals  --path_to_save_individual_legs "D:\poms2025dataset\curated_dataset\curated_dataset\" --path_to_save_evaluations  "D:\poms2025dataset\results\" --sim_count 100000 --max_timer 60
+
+
+
+# read a CSV output and compare to GT
+python3 main.py  --compare_with_labelled_data  --path_to_labeled_data  /Users/mbhattacharya/Downloads/toprint/POMS2025/training_data/study_area/project-1-at-2025-09-02-12-38-15b0e105.json  --path_to_predictions_data_csv  /Users/mbhattacharya/Downloads/toprint/POMS2025/training_data/study_area/eval_results_Y2BSU_5_2025-09-06.csv  --max_timer 60 --path_to_save_evaluations training_data/results/
+
+python3 main.py  --compare_with_labelled_data  --path_to_labeled_data  /Users/mbhattacharya/Downloads/toprint/POMS2025/training_data/study_area/project-1-at-2025-09-02-12-38-15b0e105.json  --path_to_predictions_data_csv  /Users/mbhattacharya/Downloads/toprint/POMS2025/training_data/results/eval_results_VF43O_5_2025-09-07.csv  --max_timer 60 --path_to_save_evaluations training_data/results/
+
+# eval on OAI
+python3 main.py  --evaluate_files --add_pause_bw_evals --max_timer 10 --path_to_save_individual_legs /Users/mbhattacharya/Downloads/toprint/POMS2025/dataset_1/ --path_to_save_evaluations training_data/results/ --sim_count 100000 --use_open_ai --base_url https://api.openai.com/v1/
+TODO: 
+create more samples ~400
+why is OAI optout so good , can see road on edge 
+eval on additional samples
+evaluate on GPT 5
+report mean and var of running time 
+change numbers in red across the paper 
+
